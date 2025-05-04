@@ -19,10 +19,10 @@ public class ChatApplication extends Application {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
 
-        System.out.println("THIS IS A TEST VERSION \nFOR THIS APPLICATON TO WORK PROPERLY PLEASE RUN ChatServer BEFOREHAND");
-        TimeUnit.SECONDS.sleep(1);
+            System.out.println("THIS IS A TEST VERSION \nFOR THIS APPLICATON TO WORK PROPERLY PLEASE RUN ChatServer BEFOREHAND");
+            TimeUnit.SECONDS.sleep(1);
         }
         for (int i = 1; i <=3; i++) {
             System.out.println("LEFT TILL LAUNCH -" + i);

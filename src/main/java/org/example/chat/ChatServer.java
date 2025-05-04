@@ -20,35 +20,13 @@ public class ChatServer extends Application {
         stage.show();
     }
     public static void main(String[] args) throws IOException {
+
         launch();
-        connecToServer();
+
+
     }
-    public static void  connecToServer() throws IOException {
+    public static void  connectToServer() throws IOException {
 
-        ServerSocket serverSocket = new ServerSocket(12345);
-        System.out.println("Сервер запущено, очікування клієнта...");
-        Socket clientSocket = serverSocket.accept();
-        System.out.println("Клієнт підключився!");
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-
-        BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
-
-
-        while (true){
-            String message = in.readLine();
-            if (message == null) {
-                break;
-            }
-            System.out.println("Клієнт: " + message);
-
-            System.out.print("Введіть повідомлення для клієнта: ");
-            String response = userInput.readLine();
-            out.println(response);
-        }
-        clientSocket.close();
-        serverSocket.close();
     }
 
 }
