@@ -6,4 +6,6 @@ module org.example.chat {
 
     opens org.example.chat to javafx.fxml;
     exports org.example.chat;
+
+
 }

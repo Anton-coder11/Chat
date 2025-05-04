@@ -11,8 +11,6 @@ import java.net.*;
 
 public class ChatController {
     private Socket socket;
-    private BufferedReader in;
-    private PrintWriter out;
     @FXML
     private VBox chatBox;  // Ensure that fx:id="chatBox" matches here
 
@@ -35,40 +33,17 @@ public class ChatController {
     private void connectToServer(String host, int port) {
         try {
             socket = new Socket(host, port);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new PrintWriter(socket.getOutputStream(), true);
-
-            // Receive messages in a background thread
-            new Thread(() -> {
-                String msg;
-                try {
-                    while ((msg = in.readLine()) != null) {
-                        String finalMsg = msg;
-                        Platform.runLater(() -> {
-                            MyMessage received = new MyMessage(finalMsg);
-                            received.setAlignment(Pos.CENTER_LEFT);
-                            chatBox.getChildren().add(received);
-                        });
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }).start();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public static void sendServerMessage(){
 
-    }
     @FXML
     protected void onSendButtonClick() {
         String message = sendTextArea.getText().trim();
 
         if (!message.isEmpty()) {
-            out.println(message); // Send to server
-
             // Create and add the custom message
             MyMessage myMessage = new MyMessage(message);
             chatBox.getChildren().add(myMessage);
